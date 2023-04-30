@@ -8,7 +8,7 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+    throw new GradleException('Flutter SDK not found. Define location with flutter.sdk in the local.properties file.')
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -49,20 +49,20 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.verygoodcore.photoreboot"
-        minSdkVersion flutter.minSdkVersion
+        applicationId 'com.example.verygoodcore.photoreboot'
+        minSdkVersion 19
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
     signingConfigs {
-        if (System.getenv("ANDROID_KEYSTORE_PATH")) {
+        if (System.getenv('ANDROID_KEYSTORE_PATH')) {
             release {
-                storeFile file(System.getenv("ANDROID_KEYSTORE_PATH"))
-                keyAlias System.getenv("ANDROID_KEYSTORE_ALIAS")
-                keyPassword System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
-                storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
+                storeFile file(System.getenv('ANDROID_KEYSTORE_PATH'))
+                keyAlias System.getenv('ANDROID_KEYSTORE_ALIAS')
+                keyPassword System.getenv('ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD')
+                storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
             }
         } else {
             release {
@@ -74,22 +74,22 @@ android {
         }
     }
 
-    flavorDimensions "default"
-    productFlavors { 
+    flavorDimensions 'default'
+    productFlavors {
         production {
-            dimension "default"
-            applicationIdSuffix ""
-            manifestPlaceholders = [appName: "Photoreboot"]
+            dimension 'default'
+            applicationIdSuffix ''
+            manifestPlaceholders = [appName: 'Photoreboot']
         }
         staging {
-            dimension "default"
-            applicationIdSuffix ".stg"
-            manifestPlaceholders = [appName: "[STG] Photoreboot"]
+            dimension 'default'
+            applicationIdSuffix '.stg'
+            manifestPlaceholders = [appName: '[STG] Photoreboot']
         }
         development {
-            dimension "default"
-            applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "[DEV] Photoreboot"]
+            dimension 'default'
+            applicationIdSuffix '.dev'
+            manifestPlaceholders = [appName: '[DEV] Photoreboot']
         }
     }
 

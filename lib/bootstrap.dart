@@ -1,8 +1,16 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:photoreboot/src/configs/theme_cubit.dart';
+
+import 'package:photoreboot/src/features/home/domain/upload_document_cubit.dart';
+
+import 'src/features/stamper/domain/cubits/stamp_document_cubit.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -24,11 +32,39 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
-
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = const AppBlocObserver();
+  final storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
 
+  HydratedBloc.storage = storage;
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp],
+  );
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
   await runZonedGuarded(
-    () async => runApp(await builder()),
+    () async => runApp(
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => UploadDocumentCubit(),
+          ),
+          BlocProvider(
+            create: (context) => ThemeCubit(),
+          ),
+          BlocProvider(
+            create: (context) => StampDocumentCubit(),
+          ),
+        ],
+        child: await builder(),
+      ),
+    ),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
