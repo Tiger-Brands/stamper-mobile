@@ -6,11 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:photoreboot/i18n/translations.g.dart';
 import 'package:photoreboot/src/configs/theme_cubit.dart';
-
+import 'package:photoreboot/src/features/home/domain/language/language_cubit.dart';
 import 'package:photoreboot/src/features/home/domain/upload_document_cubit.dart';
-
-import 'src/features/stamper/domain/cubits/stamp_document_cubit.dart';
+import 'package:photoreboot/src/features/stamper/domain/cubits/stamp_document_cubit.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -33,6 +33,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
   WidgetsFlutterBinding.ensureInitialized();
+
   Bloc.observer = const AppBlocObserver();
   final storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
@@ -48,6 +49,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       statusBarIconBrightness: Brightness.dark,
     ),
   );
+  LocaleSettings.useDeviceLocale();
   await runZonedGuarded(
     () async => runApp(
       MultiBlocProvider(
@@ -59,10 +61,13 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
             create: (context) => ThemeCubit(),
           ),
           BlocProvider(
+            create: (context) => LanguageCubit(),
+          ),
+          BlocProvider(
             create: (context) => StampDocumentCubit(),
           ),
         ],
-        child: await builder(),
+        child: TranslationProvider(child: await builder()),
       ),
     ),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),

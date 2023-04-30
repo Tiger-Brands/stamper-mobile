@@ -1,6 +1,22 @@
 class Assets {
   Assets._();
   
+  /// Assets for assetsIconsPngAr
+  /// assets/icons/png/ar.png
+  static const String assetsIconsPngAr = "assets/icons/png/ar.png";
+
+  /// Assets for assetsIconsPngDe
+  /// assets/icons/png/de.png
+  static const String assetsIconsPngDe = "assets/icons/png/de.png";
+
+  /// Assets for assetsIconsPngEn
+  /// assets/icons/png/en.png
+  static const String assetsIconsPngEn = "assets/icons/png/en.png";
+
+  /// Assets for assetsIconsPngEs
+  /// assets/icons/png/es.png
+  static const String assetsIconsPngEs = "assets/icons/png/es.png";
+
   /// Assets for assetsIconsPngExcel
   /// assets/icons/png/excel.png
   static const String assetsIconsPngExcel = "assets/icons/png/excel.png";
@@ -8,6 +24,10 @@ class Assets {
   /// Assets for assetsIconsPngFolder
   /// assets/icons/png/folder.png
   static const String assetsIconsPngFolder = "assets/icons/png/folder.png";
+
+  /// Assets for assetsIconsPngFr
+  /// assets/icons/png/fr.png
+  static const String assetsIconsPngFr = "assets/icons/png/fr.png";
 
   /// Assets for assetsIconsPngJpg
   /// assets/icons/png/jpg.png
@@ -24,6 +44,10 @@ class Assets {
   /// Assets for assetsIconsPngWord
   /// assets/icons/png/word.png
   static const String assetsIconsPngWord = "assets/icons/png/word.png";
+
+  /// Assets for assetsIconsPngZh
+  /// assets/icons/png/zh.png
+  static const String assetsIconsPngZh = "assets/icons/png/zh.png";
 
   /// Assets for assetsIconsSvgDocFile
   /// assets/icons/svg/doc-file.svg

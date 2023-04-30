@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hicons/flutter_hicons.dart';
+import 'package:photoreboot/i18n/translations.g.dart';
 import 'package:photoreboot/src/extensions/build_context.dart';
 import 'package:photoreboot/src/router/router.gr.dart' as routes;
 
@@ -30,18 +31,18 @@ class HomeBase extends StatelessWidget {
           onTap: router.setActiveIndex,
           selectedItemColor: context.colorScheme.primary,
           unselectedItemColor: context.colorScheme.primary.withOpacity(.35),
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Hicons.award_1),
-              label: 'Timbre',
+              icon: const Icon(Hicons.award_1),
+              label: Loc.stamp,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Hicons.chart),
-              label: 'Files',
+              icon: const Icon(Hicons.chart),
+              label: Loc.files,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Hicons.profile_1),
-              label: 'Profil',
+              icon: const Icon(Hicons.profile_1),
+              label: Loc.profile,
             )
           ],
         );

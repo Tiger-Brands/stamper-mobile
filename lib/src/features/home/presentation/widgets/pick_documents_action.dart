@@ -39,9 +39,6 @@ class PickDocumentsAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        await context.read<UploadDocumentCubit>().pickDocuments();
-      },
       child: DottedBorder(
         dashPattern: const [3, 3, 3],
         borderType: BorderType.RRect,

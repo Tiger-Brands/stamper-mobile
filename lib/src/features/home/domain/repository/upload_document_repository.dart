@@ -1,8 +1,8 @@
-import 'package:file_picker/file_picker.dart';
+import 'dart:io';
 
 abstract class UploadDocumentRepo {
   Future<String> uploadDocument({
-    required PlatformFile file,
+    required File file,
     required void Function(int, int) onBytesSent,
   });
 }

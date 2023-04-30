@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hicons/flutter_hicons.dart';
+import 'package:photoreboot/i18n/translations.g.dart';
 import 'package:photoreboot/src/extensions/build_context.dart';
 import 'package:photoreboot/src/extensions/num.dart';
 
@@ -18,16 +19,16 @@ class SearchBox extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               color: context.colorScheme.primaryContainer,
             ),
-            child: const Center(
+            child: Center(
               child: TextField(
                 decoration: InputDecoration(
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Hicons.search_2,
                     size: 18,
                   ),
-                  hintText: 'Search files and folders',
+                  hintText: Loc.search_files_folders,
                   border: InputBorder.none,
-                  contentPadding: EdgeInsets.all(8),
+                  contentPadding: const EdgeInsets.all(8),
                 ),
               ),
             ),

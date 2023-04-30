@@ -1,0 +1,21 @@
+{
+  "greetings": "Hola",
+  "welcome": "Bienvenido",
+  "login": "Iniciar sesión",
+  "register": "Registrarse",
+  "recentFiles": "Archivos recientes",
+  "examDocuments": "Documentos de examen",
+  "examResults": "Resultados de examen",
+  "examSchedule": "Calendario de examen",
+  "workDocuments": "Documentos de trabajo",
+  "schoolDocuments": "Documentos escolares",
+  "clicktoupload": "Haga clic para cargar archivos",
+  "upload": "Subir",
+  "searchFilesFolders": "Buscar archivos y carpetas",
+  "files": "Archivos",
+  "stamp": "Sello",
+  "profile": "Perfil",
+  "userFilesOverview": "Resumen y estadísticas de archivos de usuario",
+  "uploadADocumentToStart": "Cargue un documento para estampar y compartir sin estrés",
+  "darkMode": "Modo oscuro"
+}

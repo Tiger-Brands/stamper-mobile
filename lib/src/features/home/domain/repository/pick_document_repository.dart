@@ -1,5 +1,5 @@
-import 'package:file_picker/file_picker.dart' show PlatformFile;
+import 'dart:io';
 
 abstract class PickDocumentRepo {
-  Future<List<PlatformFile>> pickDocuments();
+  Future<List<File>> pickDocuments();
 }

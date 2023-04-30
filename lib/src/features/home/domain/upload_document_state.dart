@@ -4,7 +4,7 @@ part of 'upload_document_cubit.dart';
 class UploadDocumentState with _$UploadDocumentState {
   const factory UploadDocumentState.initial() = _Initial;
   const factory UploadDocumentState.picking() = _Picking;
-  const factory UploadDocumentState.picked({required List<PlatformFile> files}) =
+  const factory UploadDocumentState.picked({required List<File> files}) =
       _Picked;
   const factory UploadDocumentState.uploading({required double progress}) =
       _Uploading;

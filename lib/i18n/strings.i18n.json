@@ -1,0 +1,21 @@
+{
+  "greetings": "Hello",
+  "welcome": "Welcome",
+  "login": "Login",
+  "register": "Register",
+  "recentFiles": "Recent Files",
+  "examDocuments": "Exam Documents",
+  "examResults": "Exam Results",
+  "examSchedule": "Exam Schedule",
+  "workDocuments": "Work Documents",
+  "schoolDocuments": "School Documents",
+  "clicktoupload": "Click to upload files",
+  "upload": "Upload",
+  "searchFilesFolders": "Search Files and Folders",
+  "files": "Files",
+  "stamp": "Stamp",
+  "profile": "Profile",
+  "userFilesOverview": "User Files Overview and stats",
+  "uploadADocumentToStart": "Upload a document to stamp and share with no stress",
+  "darkMode": "Dark Mode"
+}

@@ -1,0 +1,21 @@
+{
+  "greetings": "你好",
+  "welcome": "欢迎",
+  "login": "登录",
+  "register": "注册",
+  "recentFiles": "最近文件",
+  "examDocuments": "考试文件",
+  "examResults": "考试结果",
+  "examSchedule": "考试日程",
+  "workDocuments": "工作文件",
+  "schoolDocuments": "学校文件",
+  "clicktoupload": "点击上传文件",
+  "upload": "上传",
+  "searchFilesFolders": "搜索文件和文件夹",
+  "files": "文件",
+  "stamp": "戳",
+  "profile": "个人资料",
+  "userFilesOverview": "用户文件概览和统计信息",
+  "uploadADocumentToStart": "上传一个文件进行戳章和无压力地共享",
+  "darkMode": "暗模式"
+}

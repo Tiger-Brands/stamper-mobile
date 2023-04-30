@@ -1,0 +1,21 @@
+{
+  "greetings": "مرحبًا",
+  "welcome": "أهلاً وسهلاً",
+  "login": "تسجيل الدخول",
+  "register": "تسجيل",
+  "recentFiles": "الملفات الأخيرة",
+  "examDocuments": "وثائق الاختبار",
+  "examResults": "نتائج الاختبار",
+  "examSchedule": "جدول الاختبارات",
+  "workDocuments": "وثائق العمل",
+  "schoolDocuments": "وثائق المدرسة",
+  "clicktoupload": "انقر لتحميل الملفات",
+  "upload": "تحميل",
+  "searchFilesFolders": "البحث عن الملفات والمجلدات",
+  "files": "ملفات",
+  "stamp": "ختم",
+  "profile": "الملف الشخصي",
+  "userFilesOverview": "نظرة عامة على ملفات المستخدم والإحصائيات",
+  "uploadADocumentToStart": "تحميل وثيقة للختم والمشاركة بدون توتر",
+  "darkMode": "الوضع الداكن"
+}

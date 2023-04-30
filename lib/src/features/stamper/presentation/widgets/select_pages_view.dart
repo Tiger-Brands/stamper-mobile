@@ -62,6 +62,7 @@ class SelectPagesView extends StatelessWidget {
                             color: context.colorScheme.primary,
                           ),
                         ),
+                        // ignore: lines_longer_than_80_chars
                         Text(
                           'You can select multiple pages, tap on the pages number to select it',
                           style: context.theme.textTheme.labelMedium!.copyWith(

@@ -101,7 +101,13 @@ class ActionLabel extends StatelessWidget {
                         ],
                       ),
                       const Spacer(),
-                      const Icon(Icons.more_vert)
+                      GestureDetector(
+                        onTap: () {},
+                        child: Icon(
+                          Icons.more_vert,
+                          color: infos.category.getColorData(context).onMain,
+                        ),
+                      )
                     ],
                   ),
                 ),

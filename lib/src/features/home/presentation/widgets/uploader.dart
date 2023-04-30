@@ -21,7 +21,7 @@ class Uploader extends StatelessWidget {
           picked: (files) async {
             final filesUIdata = files
                 .map(
-                  (file) => file.path!.toFileUIdata,
+                  (file) => file.path.toFileUIdata,
                 )
                 .toList();
 
@@ -132,10 +132,20 @@ class Uploader extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           orElse: () => const PickDocumentsAction(),
-          initial: () => const PickDocumentsAction(),
+          initial: () => GestureDetector(
+            onTap: () async {
+              await context.read<UploadDocumentCubit>().pickDocuments();
+            },
+            child: const PickDocumentsAction(),
+          ),
           picking: PickDocumentsAction.processing,
-          failure: (message) => PickDocumentsAction.withError(
-            message: message,
+          failure: (message) => GestureDetector(
+            onTap: () async {
+              await context.read<UploadDocumentCubit>().pickDocuments();
+            },
+            child: PickDocumentsAction.withError(
+              message: message,
+            ),
           ),
         );
       },

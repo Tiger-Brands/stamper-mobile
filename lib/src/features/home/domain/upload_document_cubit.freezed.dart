@@ -20,7 +20,7 @@ mixin _$UploadDocumentState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() picking,
-    required TResult Function(List<PlatformFile> files) picked,
+    required TResult Function(List<File> files) picked,
     required TResult Function(double progress) uploading,
     required TResult Function(List<String> documentURLs) uploaded,
     required TResult Function(String message) failure,
@@ -30,7 +30,7 @@ mixin _$UploadDocumentState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? picking,
-    TResult? Function(List<PlatformFile> files)? picked,
+    TResult? Function(List<File> files)? picked,
     TResult? Function(double progress)? uploading,
     TResult? Function(List<String> documentURLs)? uploaded,
     TResult? Function(String message)? failure,
@@ -40,7 +40,7 @@ mixin _$UploadDocumentState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? picking,
-    TResult Function(List<PlatformFile> files)? picked,
+    TResult Function(List<File> files)? picked,
     TResult Function(double progress)? uploading,
     TResult Function(List<String> documentURLs)? uploaded,
     TResult Function(String message)? failure,
@@ -137,7 +137,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() picking,
-    required TResult Function(List<PlatformFile> files) picked,
+    required TResult Function(List<File> files) picked,
     required TResult Function(double progress) uploading,
     required TResult Function(List<String> documentURLs) uploaded,
     required TResult Function(String message) failure,
@@ -150,7 +150,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? picking,
-    TResult? Function(List<PlatformFile> files)? picked,
+    TResult? Function(List<File> files)? picked,
     TResult? Function(double progress)? uploading,
     TResult? Function(List<String> documentURLs)? uploaded,
     TResult? Function(String message)? failure,
@@ -163,7 +163,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? picking,
-    TResult Function(List<PlatformFile> files)? picked,
+    TResult Function(List<File> files)? picked,
     TResult Function(double progress)? uploading,
     TResult Function(List<String> documentURLs)? uploaded,
     TResult Function(String message)? failure,
@@ -262,7 +262,7 @@ class _$_Picking implements _Picking {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() picking,
-    required TResult Function(List<PlatformFile> files) picked,
+    required TResult Function(List<File> files) picked,
     required TResult Function(double progress) uploading,
     required TResult Function(List<String> documentURLs) uploaded,
     required TResult Function(String message) failure,
@@ -275,7 +275,7 @@ class _$_Picking implements _Picking {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? picking,
-    TResult? Function(List<PlatformFile> files)? picked,
+    TResult? Function(List<File> files)? picked,
     TResult? Function(double progress)? uploading,
     TResult? Function(List<String> documentURLs)? uploaded,
     TResult? Function(String message)? failure,
@@ -288,7 +288,7 @@ class _$_Picking implements _Picking {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? picking,
-    TResult Function(List<PlatformFile> files)? picked,
+    TResult Function(List<File> files)? picked,
     TResult Function(double progress)? uploading,
     TResult Function(List<String> documentURLs)? uploaded,
     TResult Function(String message)? failure,
@@ -353,7 +353,7 @@ abstract class _$$_PickedCopyWith<$Res> {
   factory _$$_PickedCopyWith(_$_Picked value, $Res Function(_$_Picked) then) =
       __$$_PickedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PlatformFile> files});
+  $Res call({List<File> files});
 }
 
 /// @nodoc
@@ -372,7 +372,7 @@ class __$$_PickedCopyWithImpl<$Res>
       files: null == files
           ? _value._files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<PlatformFile>,
+              as List<File>,
     ));
   }
 }
@@ -380,11 +380,11 @@ class __$$_PickedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Picked implements _Picked {
-  const _$_Picked({required final List<PlatformFile> files}) : _files = files;
+  const _$_Picked({required final List<File> files}) : _files = files;
 
-  final List<PlatformFile> _files;
+  final List<File> _files;
   @override
-  List<PlatformFile> get files {
+  List<File> get files {
     if (_files is EqualUnmodifiableListView) return _files;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_files);
@@ -418,7 +418,7 @@ class _$_Picked implements _Picked {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() picking,
-    required TResult Function(List<PlatformFile> files) picked,
+    required TResult Function(List<File> files) picked,
     required TResult Function(double progress) uploading,
     required TResult Function(List<String> documentURLs) uploaded,
     required TResult Function(String message) failure,
@@ -431,7 +431,7 @@ class _$_Picked implements _Picked {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? picking,
-    TResult? Function(List<PlatformFile> files)? picked,
+    TResult? Function(List<File> files)? picked,
     TResult? Function(double progress)? uploading,
     TResult? Function(List<String> documentURLs)? uploaded,
     TResult? Function(String message)? failure,
@@ -444,7 +444,7 @@ class _$_Picked implements _Picked {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? picking,
-    TResult Function(List<PlatformFile> files)? picked,
+    TResult Function(List<File> files)? picked,
     TResult Function(double progress)? uploading,
     TResult Function(List<String> documentURLs)? uploaded,
     TResult Function(String message)? failure,
@@ -501,9 +501,9 @@ class _$_Picked implements _Picked {
 }
 
 abstract class _Picked implements UploadDocumentState {
-  const factory _Picked({required final List<PlatformFile> files}) = _$_Picked;
+  const factory _Picked({required final List<File> files}) = _$_Picked;
 
-  List<PlatformFile> get files;
+  List<File> get files;
   @JsonKey(ignore: true)
   _$$_PickedCopyWith<_$_Picked> get copyWith =>
       throw _privateConstructorUsedError;
@@ -576,7 +576,7 @@ class _$_Uploading implements _Uploading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() picking,
-    required TResult Function(List<PlatformFile> files) picked,
+    required TResult Function(List<File> files) picked,
     required TResult Function(double progress) uploading,
     required TResult Function(List<String> documentURLs) uploaded,
     required TResult Function(String message) failure,
@@ -589,7 +589,7 @@ class _$_Uploading implements _Uploading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? picking,
-    TResult? Function(List<PlatformFile> files)? picked,
+    TResult? Function(List<File> files)? picked,
     TResult? Function(double progress)? uploading,
     TResult? Function(List<String> documentURLs)? uploaded,
     TResult? Function(String message)? failure,
@@ -602,7 +602,7 @@ class _$_Uploading implements _Uploading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? picking,
-    TResult Function(List<PlatformFile> files)? picked,
+    TResult Function(List<File> files)? picked,
     TResult Function(double progress)? uploading,
     TResult Function(List<String> documentURLs)? uploaded,
     TResult Function(String message)? failure,
@@ -741,7 +741,7 @@ class _$_Uploaded implements _Uploaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() picking,
-    required TResult Function(List<PlatformFile> files) picked,
+    required TResult Function(List<File> files) picked,
     required TResult Function(double progress) uploading,
     required TResult Function(List<String> documentURLs) uploaded,
     required TResult Function(String message) failure,
@@ -754,7 +754,7 @@ class _$_Uploaded implements _Uploaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? picking,
-    TResult? Function(List<PlatformFile> files)? picked,
+    TResult? Function(List<File> files)? picked,
     TResult? Function(double progress)? uploading,
     TResult? Function(List<String> documentURLs)? uploaded,
     TResult? Function(String message)? failure,
@@ -767,7 +767,7 @@ class _$_Uploaded implements _Uploaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? picking,
-    TResult Function(List<PlatformFile> files)? picked,
+    TResult Function(List<File> files)? picked,
     TResult Function(double progress)? uploading,
     TResult Function(List<String> documentURLs)? uploaded,
     TResult Function(String message)? failure,
@@ -898,7 +898,7 @@ class _$_Failure implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() picking,
-    required TResult Function(List<PlatformFile> files) picked,
+    required TResult Function(List<File> files) picked,
     required TResult Function(double progress) uploading,
     required TResult Function(List<String> documentURLs) uploaded,
     required TResult Function(String message) failure,
@@ -911,7 +911,7 @@ class _$_Failure implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? picking,
-    TResult? Function(List<PlatformFile> files)? picked,
+    TResult? Function(List<File> files)? picked,
     TResult? Function(double progress)? uploading,
     TResult? Function(List<String> documentURLs)? uploaded,
     TResult? Function(String message)? failure,
@@ -924,7 +924,7 @@ class _$_Failure implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? picking,
-    TResult Function(List<PlatformFile> files)? picked,
+    TResult Function(List<File> files)? picked,
     TResult Function(double progress)? uploading,
     TResult Function(List<String> documentURLs)? uploaded,
     TResult Function(String message)? failure,
