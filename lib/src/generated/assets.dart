@@ -33,6 +33,18 @@ class Assets {
   /// assets/icons/png/jpg.png
   static const String assetsIconsPngJpg = "assets/icons/png/jpg.png";
 
+  /// Assets for assetsIconsPngMastercard
+  /// assets/icons/png/mastercard.png
+  static const String assetsIconsPngMastercard = "assets/icons/png/mastercard.png";
+
+  /// Assets for assetsIconsPngMomo
+  /// assets/icons/png/momo.png
+  static const String assetsIconsPngMomo = "assets/icons/png/momo.png";
+
+  /// Assets for assetsIconsPngOm
+  /// assets/icons/png/om.png
+  static const String assetsIconsPngOm = "assets/icons/png/om.png";
+
   /// Assets for assetsIconsPngPdf
   /// assets/icons/png/pdf.png
   static const String assetsIconsPngPdf = "assets/icons/png/pdf.png";
@@ -40,6 +52,10 @@ class Assets {
   /// Assets for assetsIconsPngSceau
   /// assets/icons/png/sceau.png
   static const String assetsIconsPngSceau = "assets/icons/png/sceau.png";
+
+  /// Assets for assetsIconsPngVisa
+  /// assets/icons/png/visa.png
+  static const String assetsIconsPngVisa = "assets/icons/png/visa.png";
 
   /// Assets for assetsIconsPngWord
   /// assets/icons/png/word.png

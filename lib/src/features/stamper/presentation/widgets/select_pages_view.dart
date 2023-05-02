@@ -1,3 +1,5 @@
+// ignore_for_file: duplicate_ignore, lines_longer_than_80_chars
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -62,7 +64,7 @@ class SelectPagesView extends StatelessWidget {
                             color: context.colorScheme.primary,
                           ),
                         ),
-                        // ignore: lines_longer_than_80_chars
+                        // ignore: lines_longer_than_80_chars, lines_longer_than_80_chars
                         Text(
                           'You can select multiple pages, tap on the pages number to select it',
                           style: context.theme.textTheme.labelMedium!.copyWith(

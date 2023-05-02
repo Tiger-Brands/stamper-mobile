@@ -1,10 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hicons/flutter_hicons.dart';
 import 'package:photoreboot/src/extensions/build_context.dart';
 import 'package:photoreboot/src/extensions/num.dart';
-import 'package:photoreboot/src/features/home/domain/upload_document_cubit.dart';
 
 class PickDocumentsAction extends StatelessWidget {
   const PickDocumentsAction({
