@@ -11,8 +11,9 @@ class StampDocumentPaymentService {
     NotchpayInitRequest request,
   ) async {
     try {
-      final response = await dio.post<Response<NotchPayInitResponse>>(
-        'payments/initialize/',
+      // ignore: inference_failure_on_function_invocation
+      final response = await dio.post(
+        '/payments/initialize/',
         data: request.toMap(),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -26,14 +27,6 @@ class StampDocumentPaymentService {
       } else {
         throw Exception('Request failed => HTTP ${response.statusCode}');
       }
-    } on DioError catch (err) {
-      if (err.response != null) {
-        final responseBody = err.response!.data as Map<String, dynamic>;
-        final message = responseBody['message'] as String? ?? 'Unknown error';
-        throw Exception('HTTP ${err.response!.statusCode}: $message');
-      } else {
-        throw Exception('Network error: ${err.message}');
-      }
     } catch (err) {
       rethrow;
     }
@@ -46,14 +39,16 @@ class StampDocumentPaymentService {
     String reference,
   ) async {
     try {
-      final response = await dio.put<Response<NotchPayConfirmResponse>>(
-        'payments/$reference',
+      final response = await dio.put(
+        '/payments/$reference',
         queryParameters: {
           'currency': 'XAF',
         },
         data: request.toMap(),
       );
-      if (response.statusCode == 200 || response.statusCode == 201) {
+      if (response.statusCode == 200 ||
+          response.statusCode == 201 ||
+          response.statusCode == 202) {
         final responseBody = response.data;
         if (responseBody == null) {
           throw Exception('Confirmation of payment failed');
@@ -63,14 +58,6 @@ class StampDocumentPaymentService {
         );
       } else {
         throw Exception('Request failed => HTTP ${response.statusCode}');
-      }
-    } on DioError catch (err) {
-      if (err.response != null) {
-        final responseBody = err.response!.data as Map<String, dynamic>;
-        final message = responseBody['message'] as String? ?? 'Unknown error';
-        throw Exception('HTTP ${err.response!.statusCode}: $message');
-      } else {
-        throw Exception('Network error: ${err.message}');
       }
     } catch (err) {
       rethrow;

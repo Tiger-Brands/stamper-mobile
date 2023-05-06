@@ -7,7 +7,7 @@ final _dioOptions = BaseOptions(
   receiveTimeout: const Duration(seconds: 60),
   headers: {
     'Content-Type': 'application/json',
-    'Authorixaation': dotenv.get('NOTCH_PAY_API_AUTHORIZATION_KEY')
+    'Authorization': dotenv.get('NOTCH_PAY_API_AUTHORIZATION_KEY')
   },
 );
 final dio = Dio(

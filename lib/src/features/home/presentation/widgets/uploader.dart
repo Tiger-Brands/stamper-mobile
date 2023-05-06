@@ -43,8 +43,8 @@ class Uploader extends StatelessWidget {
       },
       builder: (context, state) {
         return state.maybeWhen(
-          orElse: () => const PickDocumentsAction(),
-          initial: () => GestureDetector(
+          //  orElse: () => const PickDocumentsAction(),
+          orElse: () => GestureDetector(
             onTap: () async {
               await context.read<UploadDocumentCubit>().pickDocuments();
             },

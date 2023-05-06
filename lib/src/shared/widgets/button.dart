@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:photoreboot/src/extensions/build_context.dart';
-import 'package:photoreboot/src/extensions/colorx.dart';
 import 'package:photoreboot/src/extensions/num.dart';
 
 class Button extends StatelessWidget {
@@ -28,7 +27,7 @@ class Button extends StatelessWidget {
         width: context.width,
         height: 54,
         decoration: BoxDecoration(
-          color: color,
+          color: color ?? context.colorScheme.primary,
           borderRadius: BorderRadius.circular(14),
         ),
         child: Row(
@@ -38,7 +37,7 @@ class Button extends StatelessWidget {
               text,
               style: context.bodyLg.copyWith(
                 fontWeight: FontWeight.bold,
-                color: (color ?? context.colorScheme.primary).inverse,
+                color: color ?? context.colorScheme.onBackground,
               ),
             ),
             if (icon != null) ...[

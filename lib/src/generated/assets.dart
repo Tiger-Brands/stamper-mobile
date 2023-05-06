@@ -41,9 +41,17 @@ class Assets {
   /// assets/icons/png/momo.png
   static const String assetsIconsPngMomo = "assets/icons/png/momo.png";
 
+  /// Assets for assetsIconsPngNotchpay
+  /// assets/icons/png/notchpay.png
+  static const String assetsIconsPngNotchpay = "assets/icons/png/notchpay.png";
+
   /// Assets for assetsIconsPngOm
   /// assets/icons/png/om.png
   static const String assetsIconsPngOm = "assets/icons/png/om.png";
+
+  /// Assets for assetsIconsPngPaypal
+  /// assets/icons/png/paypal.png
+  static const String assetsIconsPngPaypal = "assets/icons/png/paypal.png";
 
   /// Assets for assetsIconsPngPdf
   /// assets/icons/png/pdf.png
@@ -52,6 +60,10 @@ class Assets {
   /// Assets for assetsIconsPngSceau
   /// assets/icons/png/sceau.png
   static const String assetsIconsPngSceau = "assets/icons/png/sceau.png";
+
+  /// Assets for assetsIconsPngUba
+  /// assets/icons/png/uba.png
+  static const String assetsIconsPngUba = "assets/icons/png/uba.png";
 
   /// Assets for assetsIconsPngVisa
   /// assets/icons/png/visa.png

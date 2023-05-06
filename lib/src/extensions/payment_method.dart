@@ -11,6 +11,13 @@ extension PaymentMethodLogoX on String {
         return Assets.assetsIconsPngVisa;
       case 'MasterCard':
         return Assets.assetsIconsPngMastercard;
+      case 'Paypal':
+        return Assets.assetsIconsPngPaypal;
+      case 'Bank':
+        return Assets.assetsIconsPngUba;
+      case 'NotchPay':
+        return Assets.assetsIconsPngNotchpay;
+
       default:
         return Assets.assetsIconsPngOm;
     }

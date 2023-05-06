@@ -1,10 +1,10 @@
 enum PaymentMethod {
   orange,
   mtn,
+  bank,
+  notchpay,
   visa,
   mastercard,
-  notchpay,
-  bank,
   paypal,
 }
 

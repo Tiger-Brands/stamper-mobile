@@ -2,6 +2,7 @@
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:photoreboot/src/features/stamper/presentation/widgets/download_document_view.dart';
 import 'package:photoreboot/src/features/stamper/presentation/widgets/prepare_document_view.dart';
 import 'package:photoreboot/src/features/stamper/presentation/widgets/select_pages_view.dart';
 import 'package:photoreboot/src/features/stamper/presentation/widgets/stamp_preview.dart';
@@ -22,6 +23,7 @@ class StampDocuments extends StatelessWidget {
           PrepareDocumentView(),
           SelectPagesView(),
           StampPreview(),
+          DownloadDocumentView()
         ],
       ),
     );

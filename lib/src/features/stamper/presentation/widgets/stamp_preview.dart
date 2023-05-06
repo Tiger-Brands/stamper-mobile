@@ -1,18 +1,21 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'package:auto_route/auto_route.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hicons/flutter_hicons.dart';
 import 'package:photoreboot/src/extensions/build_context.dart';
 import 'package:photoreboot/src/extensions/num.dart';
 import 'package:photoreboot/src/extensions/payment_method.dart';
 import 'package:photoreboot/src/features/stamper/data/enums/payment_methods.dart';
+import 'package:photoreboot/src/features/stamper/data/requests/notch_pay_confirm_request.dart';
+import 'package:photoreboot/src/features/stamper/data/requests/notch_pay_init_request.dart';
 import 'package:photoreboot/src/features/stamper/domain/cubits/payment_cubit/notchpay_cubit.dart';
 import 'package:photoreboot/src/features/stamper/domain/cubits/stamp_document_cubit.dart';
+import 'package:photoreboot/src/features/stamper/presentation/screens/stamp_document.dart';
 import 'package:photoreboot/src/shared/widgets/button.dart';
 import 'package:photoreboot/src/shared/widgets/input.dart';
+
+final activePaymentMethod = ValueNotifier('Orange Money');
 
 class StampPreview extends StatelessWidget {
   const StampPreview({
@@ -26,71 +29,43 @@ class StampPreview extends StatelessWidget {
         return state.maybeWhen(
           orElse: () => const Center(child: Text('No document stamped')),
           stamped: (stampedDocumentInfos) {
-            return Column(
-              children: [
-                34.vGap,
-                Row(
-                  children: [
-                    Text(
-                      'Document Stamped',
-                      style: context.theme.textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: context.colorScheme.primary,
-                      ),
-                    ),
-                  ],
-                ),
-                14.vGap,
-                Text(
-                  'Your document has been stamped, proceed with payment to be able to download your document.',
-                  style: context.theme.textTheme.labelMedium!.copyWith(
-                    color: context.colorScheme.primary,
-                  ),
-                ),
-                24.vGap,
-                SizedBox(
-                  height: 200,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: stampedDocumentInfos.selectedPageImages.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final pageImage =
-                          stampedDocumentInfos.selectedPageImages[index];
-                      return DottedBorder(
-                        dashPattern: const [3, 3, 3],
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(14),
-                        color: context.colorScheme.primary,
-                        strokeCap: StrokeCap.round,
-                        child: Container(
-                          height: 180,
-                          width: 140,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            color: context.colorScheme.primaryContainer,
-                          ),
-                          child: RawImage(
-                            image: pageImage.imageIfAvailable,
-                            fit: BoxFit.contain,
-                          ),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Column(
+                children: [
+                  34.vGap,
+                  Row(
+                    children: [
+                      Text(
+                        'Document Stamped',
+                        style: context.theme.textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: context.colorScheme.primary,
                         ),
+                      ),
+                    ],
+                  ),
+                  14.vGap,
+                  Text(
+                    'Your document has been stamped, proceed with payment to be able to download your document.',
+                    style: context.theme.textTheme.labelMedium!.copyWith(
+                      color: context.colorScheme.primary,
+                    ),
+                  ),
+                  24.vGap,
+                  Button(
+                    action: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (context) {
+                          return const _PaymentFormSheet();
+                        },
                       );
                     },
+                    text: 'Start Payment',
                   ),
-                ),
-                24.vGap,
-                Button(
-                  action: () {
-                    showModalBottomSheet<void>(
-                      context: context,
-                      builder: (context) {
-                        return const _PaymentFormSheet();
-                      },
-                    );
-                  },
-                  text: 'Start Payment',
-                ),
-              ],
+                ],
+              ),
             );
           },
         );
@@ -154,26 +129,31 @@ class _PaymentFormSheet extends StatelessWidget {
               'Payment Method',
             ),
             14.vGap,
-            DropdownButton<String>(
-              underline: const SizedBox.shrink(),
-              value: 'Orange Money',
-              onChanged: (method) {},
-              items: PaymentMethod.orange.toNameList
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        value.getPaymentProviderLogo,
-                        width: 24,
-                      ),
-                      8.hGap,
-                      Text(value),
-                    ],
-                  ),
-                );
-              }).toList(),
+            ValueListenableBuilder(
+              valueListenable: activePaymentMethod,
+              builder: (context, activeMethod, child) => DropdownButton<String>(
+                underline: const SizedBox.shrink(),
+                value: activeMethod,
+                onChanged: (method) {
+                  activePaymentMethod.value = method!;
+                },
+                items: PaymentMethod.orange.toNameList
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          value.getPaymentProviderLogo,
+                          width: 24,
+                        ),
+                        8.hGap,
+                        Text(value),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
             ),
             Input(
               label: 'Orange money number',
@@ -185,26 +165,84 @@ class _PaymentFormSheet extends StatelessWidget {
               listener: (BuildContext context, NotchpayState state) {
                 state.whenOrNull(
                   initialized: (data) {
+                    Navigator.pop(context);
                     showDialog<void>(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: const Text('Payment confirmation'),
-                        content: Column(
-                          children: [
-                            const Text('Your payment has been initialized...'),
-                            _TransactionDetail(
-                              'Number',
-                              data.transaction.customer.phone,
-                            ),
-                            _TransactionDetail(
-                              'Total amount',
-                              data.transaction.amount.toString(),
-                            ),
-                            Button(
-                              action: () {},
-                              text: 'Confirm and pay',
-                            )
-                          ],
+                        actions: [
+                          TextButton(
+                            child: const Text('Cancel'),
+                            onPressed: () {
+                              context.router.pop();
+                            },
+                          ),
+                          BlocConsumer<NotchpayCubit, NotchpayState>(
+                            listener:
+                                (BuildContext context, NotchpayState state) {
+                              state.maybeWhen(
+                                orElse: () {},
+                                confirmed: (data) {
+                                  Navigator.pop(context);
+                                  stamptDocumentPageController.nextPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut,
+                                  );
+                                },
+                              );
+                            },
+                            builder:
+                                (BuildContext context, NotchpayState state) {
+                              return state.maybeWhen(
+                                orElse: () => TextButton(
+                                  child: const Text('Confirm'),
+                                  onPressed: () {
+                                    final confirmRequest =
+                                        NotchpayConfirmRequest(
+                                      channel: 'mobile',
+                                      data: Data(
+                                        phone: '+237654495515',
+                                      ),
+                                    );
+                                    context.read<NotchpayCubit>().confirm(
+                                          request: confirmRequest,
+                                          reference: data.transaction.reference,
+                                        );
+                                  },
+                                ),
+                                confirming: () {
+                                  return const CircularProgressIndicator();
+                                },
+                              );
+                            },
+                          )
+                        ],
+                        title: const Text(
+                          'Confirmation',
+                        ),
+                        content: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 14,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text(
+                                'Your payment has been initialized...',
+                              ),
+                              14.vGap,
+                              _TransactionDetail(
+                                'Number',
+                                data.transaction.customer.phone,
+                              ),
+                              4.vGap,
+                              _TransactionDetail(
+                                'Total amount',
+                                data.transaction.amount.toString(),
+                              ),
+                              14.vGap
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -212,9 +250,32 @@ class _PaymentFormSheet extends StatelessWidget {
                 );
               },
               builder: (BuildContext context, NotchpayState state) {
-                return Button(
-                  action: () {},
-                  text: 'Request and pay',
+                final request = NotchpayInitRequest(
+                  email: 'baimamboukar@gmail.com',
+                  currency: 'XAF',
+                  phone: '+237654495515',
+                  amount: '1500',
+                  description: 'Frais de timbrage',
+                );
+                return state.maybeWhen(
+                  orElse: () => Button(
+                    action: () {
+                      context
+                          .read<NotchpayCubit>()
+                          .initialize(request: request);
+                    },
+                    text: 'Request and pay',
+                  ),
+                  initializing: () => GestureDetector(
+                    onTap: () {
+                      context
+                          .read<NotchpayCubit>()
+                          .emit(const NotchpayState.initial());
+                    },
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
                 );
               },
             ),
@@ -234,7 +295,7 @@ class _TransactionDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(Hicons.call),
+        4.vGap,
         Text(
           title,
           style: const TextStyle(

@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pdf_render/pdf_render.dart' as render;
 import 'package:photoreboot/src/features/stamper/data/models/stamped_document.dart';
 import 'package:photoreboot/src/generated/assets.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
@@ -68,18 +67,10 @@ class StampDocumentCubit extends Cubit<StampDocumentState> {
       }
       final stampedData = await document.save();
       document.dispose();
-      final docFromData =
-          await render.PdfDocument.openData(Uint8List.fromList(stampedData));
-      final selectedPageImages = <render.PdfPageImage>[];
-      for (final pageIndex in pages) {
-        final page = await docFromData.getPage(pageIndex);
-        final pageImage = await page.render();
-        await pageImage.createImageIfNotAvailable();
-        selectedPageImages.add(pageImage);
-      }
+
       final stampedDocument = StampedDocumentInfos(
         document: Uint8List.fromList(stampedData),
-        selectedPageImages: selectedPageImages,
+        // selectedPageImages: selectedPageImages,
         pagesStamped: pages,
         originalDocumentPath: documentPath,
         stampedAt: DateTime.now(),

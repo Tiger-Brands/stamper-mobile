@@ -36,7 +36,7 @@ class SelectPagesView extends StatelessWidget {
                 children: [
                   34.vGap,
                   SizedBox(
-                    height: 200,
+                    height: 350,
                     child: PDFView(
                       filePath: documentPath,
                       swipeHorizontal: true,
