@@ -2,5 +2,9 @@ import 'package:photoreboot/app/app.dart';
 import 'package:photoreboot/bootstrap.dart';
 
 void main() {
-  bootstrap(() => const App());
+  bootstrap(
+    () => const App(),
+  );
 }
+
+//675780784-Oben Njock//
