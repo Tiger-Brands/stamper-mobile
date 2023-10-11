@@ -53,7 +53,7 @@ dev_dependencies:
   mocktail: ^0.3.0
   slang: ^3.16.2
   slang_build_runner: ^3.16.0
-  very_good_analysis: ^3.1.0
+  very_good_analysis: ^4.0.0+1
 
 flutter:
   uses-material-design: true
