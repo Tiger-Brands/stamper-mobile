@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photoreboot/src/constants/breakpoints.dart';
 import 'package:photoreboot/src/features/home/data/enums/document_group_category.dart';
 import 'package:photoreboot/src/features/home/data/models/document_infos.dart';
 
@@ -71,6 +72,13 @@ extension BuildContextX on BuildContext {
   Orientation get orientation => mediaQuery.orientation;
   bool get isPortrait => orientation == Orientation.portrait;
   bool get isLandscape => orientation == Orientation.landscape;
+  bool get isMobile => width <= Constants.MOBILE_BREAKPOINT;
+  bool get isTablet =>
+      width > Constants.MOBILE_BREAKPOINT &&
+      width <= Constants.TABLET_BREAKPOINT;
+  bool get isDesktop =>
+      width > Constants.TABLET_BREAKPOINT &&
+      width <= Constants.DESKTOP_BREAKPOINT;
 }
 
 extension ColorDataX on DocgroupCategory {

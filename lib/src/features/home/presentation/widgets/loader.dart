@@ -38,7 +38,7 @@ class Loader extends StatelessWidget {
           ),
         ),
         8.hGap,
-        Text('${(progress * 10).toStringAsFixed(1)}%')
+        Text('${(progress * 10).toStringAsFixed(1)}%'),
       ],
     );
   }

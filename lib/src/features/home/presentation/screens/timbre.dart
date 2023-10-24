@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
 import 'package:photoreboot/src/extensions/num.dart';
 import 'package:photoreboot/src/features/home/presentation/widgets/dataview.dart';
 import 'package:photoreboot/src/features/home/presentation/widgets/search_box.dart';
@@ -14,22 +13,31 @@ class TimbreStamp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Column(
-          children: [
-            34.vGap,
-            const SearchBox(),
-            24.vGap,
-            const Uploader(),
-            24.vGap,
-            const Expanded(
-              child: DataView(),
-            ),
-          ],
-        ),
+        padding: EdgeInsets.all(14),
+        child: _Mobile(),
       ),
+    );
+  }
+}
+
+class _Mobile extends StatelessWidget {
+  const _Mobile();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        34.vGap,
+        const SearchBox(),
+        24.vGap,
+        const Uploader(),
+        24.vGap,
+        const Expanded(
+          child: DataView(),
+        ),
+      ],
     );
   }
 }

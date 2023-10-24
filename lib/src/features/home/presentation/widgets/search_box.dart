@@ -39,7 +39,7 @@ class SearchBox extends StatelessWidget {
           backgroundColor: context.colorScheme.primaryContainer,
           onPressed: () {},
           child: const Icon(Hicons.filter_5),
-        )
+        ),
       ],
     );
   }

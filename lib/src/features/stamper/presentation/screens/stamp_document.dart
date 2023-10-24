@@ -23,7 +23,7 @@ class StampDocuments extends StatelessWidget {
           PrepareDocumentView(),
           SelectPagesView(),
           StampPreview(),
-          DownloadDocumentView()
+          DownloadDocumentView(),
         ],
       ),
     );

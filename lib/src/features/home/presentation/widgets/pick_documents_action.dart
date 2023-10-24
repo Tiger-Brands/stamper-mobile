@@ -45,7 +45,11 @@ class PickDocumentsAction extends StatelessWidget {
             withError ? context.colorScheme.error : context.colorScheme.primary,
         strokeCap: StrokeCap.round,
         child: Container(
-          height: 120,
+          height: context.isMobile
+              ? 124
+              : context.isTablet
+                  ? 174
+                  : 264,
           width: context.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
@@ -81,7 +85,7 @@ class PickDocumentsAction extends StatelessWidget {
                         .copyWith(color: context.colorScheme.onErrorContainer),
                   )
                 else
-                  const Text('click to upload file...')
+                  const Text('click to upload file...'),
               ],
             ),
           ),

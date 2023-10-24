@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,14 +32,16 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  WidgetsFlutterBinding.ensureInitialized();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
-  WidgetsFlutterBinding.ensureInitialized();
 
   Bloc.observer = const AppBlocObserver();
   final storage = await HydratedStorage.build(
-    storageDirectory: await getApplicationDocumentsDirectory(),
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getTemporaryDirectory(),
   );
 
   HydratedBloc.storage = storage;
@@ -53,6 +56,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   );
   LocaleSettings.useDeviceLocale();
   await dotenv.load();
+
+  //setUrlStrategy(const PathUrlStrategy());
   await runZonedGuarded(
     () async => runApp(
       MultiBlocProvider(
